@@ -1,19 +1,29 @@
-import React from "react";
+import React, {useState} from "react";
 
 type AccordionPropsType = {
     titleValue: string,
-    collapsed: boolean,
+    //collapsed: boolean,
 }
+
 
 //получение title из app через props
 //collapsed - если true не покажет AccordionBody {props.collapsed === false && <AccordionBody/>}
 function Accordion(props: AccordionPropsType) {
-
+        //неконтролируемый, значение передается через useState, при нажатии развернет/свернет меню
+    let [collapsed, setCollapsed] = useState(true)
         return <div>
             <AccordionTitle titleValue={props.titleValue}/> {/*передает полученный из app через props в AccordionTitle*/}
-            {props.collapsed === false && <AccordionBody/>}
+            <button onClick={() => {setCollapsed(!collapsed)}}>TOGGLE</button>
+            {!collapsed && <AccordionBody/>}
             </div>
-            }
+        }
+
+        //контролируемый, значение collapsed передается в компоненту из app
+        // return <div>
+        //     <AccordionTitle titleValue={props.titleValue}/> {/*передает полученный из app через props в AccordionTitle*/}
+        //     {props.collapsed === false && <AccordionBody/>}
+        //     </div>
+        //     }
 
 type AccordionTitlePropsType = {
     titleValue: string
