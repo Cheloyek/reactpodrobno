@@ -1,35 +1,52 @@
-import React from "react";
+import React, {useState} from "react";
 
 type OnOffPropsType = {
-    on: boolean
+    //on: boolean
 }
 
 
 function OnOff(props: OnOffPropsType) {
+
+    //хук
+    let [on, setOn] = useState(false)
+
     // стили
     const onStyle = {
         border: '1px solid black',
         width: '30px',
+        display: 'inline-block',
+        padding: '2px',
+        backgroundColor: on ? 'green' : 'gray'
+
     }
     const offStyle = {
         border: '1px solid black',
         width: '30px',
+        height: '20px',
+        display: 'inline-block',
+        marginLeft: '2px',
+        padding: '2px',
+        backgroundColor: on ? 'gray' : 'red'
     }
     const indicatorStyle = {
-        width: '30px',
-        height: '30px',
-        borderRadius: '15px',
-        border: '1px solid black'
+        width: '10px',
+        height: '10px',
+        borderRadius: '5px',
+        border: '1px solid black',
+        display: 'inline-block',
+        marginLeft: '5px',
+        backgroundColor: on ? 'green' : 'red'
     }
     //
 
+    //перерисовка стиля при клике при помощи useState
     return (
         <div>
             {/*<button>On</button>*/}
             {/*<button>Off</button>*/}
-            <div style={onStyle}>On</div>
-            <div style={offStyle}>Off</div>
-            <div style={indicatorStyle}></div>
+            <span style={onStyle} onClick={() => { setOn(true)}}>On</span>
+            <span style={offStyle} onClick={() => { setOn(false)}}>Off</span>
+            <span style={indicatorStyle}></span>
         </div>
     )
 }

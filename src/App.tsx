@@ -5,7 +5,7 @@ import Rating from "./components/Rating/Rating";
 import Accordion from "./components/Accordion/Accordion";
 import OnOff from "./components/OnOff/OnOff";
 
-function App() {
+function App(props:any) {
 
 
   return (
@@ -17,9 +17,9 @@ function App() {
         <Rating value={3}/>
         <Rating value={4}/>
         <Rating value={5}/>
-        <OnOff on={true} />
+        <OnOff/>
         <Accordion titleValue={'Меню'} collapsed={true}/>
-        <OnOff on={true}/>
+        <OnOff/>
         <Accordion titleValue={'sdsdf'} collapsed={false}/>
     </div>
   );
