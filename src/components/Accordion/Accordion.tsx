@@ -10,10 +10,11 @@ type AccordionPropsType = {
 //collapsed - если true не покажет AccordionBody {props.collapsed === false && <AccordionBody/>}
 function Accordion(props: AccordionPropsType) {
         //неконтролируемый, значение передается через useState, при нажатии развернет/свернет меню
+        //в AccordionTitle передали onClick который вызывает функцию () => {setCollapsed(!collapsed)}
+        //AccordionTitle через props.onClick при нажатии вызывает функцию () => {setCollapsed(!collapsed)}
     let [collapsed, setCollapsed] = useState(true)
         return <div>
-            <AccordionTitle titleValue={props.titleValue}/> {/*передает полученный из app через props в AccordionTitle*/}
-            <button onClick={() => {setCollapsed(!collapsed)}}>TOGGLE</button>
+            <AccordionTitle titleValue={props.titleValue} onClick={ () => {setCollapsed(!collapsed)}}/> {/*передает полученный из app через props в AccordionTitle*/}
             {!collapsed && <AccordionBody/>}
             </div>
         }
@@ -27,11 +28,12 @@ function Accordion(props: AccordionPropsType) {
 
 type AccordionTitlePropsType = {
     titleValue: string
+    onClick: () => void
 }
 
 //получает title из Accordion через props
 function AccordionTitle(props: AccordionTitlePropsType) {
-    return <div>{props.titleValue}</div>
+    return <div onClick={() => { props.onClick()}}>{props.titleValue}</div>
 }
 
 function AccordionBody() {
