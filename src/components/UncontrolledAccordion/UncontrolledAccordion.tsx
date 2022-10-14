@@ -2,13 +2,13 @@ import React, {useState} from "react";
 
 type AccordionPropsType = {
     titleValue: string,
-    // collapsed: boolean,
+    //collapsed: boolean,
 }
 
 
 //получение title из app через props
 //collapsed - если true не покажет AccordionBody {props.collapsed === false && <AccordionBody/>}
-function Accordion(props: AccordionPropsType) {
+function UncontrolledAccordion(props: AccordionPropsType) {
         //неконтролируемый, значение передается через useState, при нажатии развернет/свернет меню
         //в AccordionTitle передали onClick который вызывает функцию () => {setCollapsed(!collapsed)}
         //AccordionTitle через props.onClick при нажатии вызывает функцию () => {setCollapsed(!collapsed)}
@@ -46,4 +46,4 @@ function AccordionBody() {
         )
 }
 
-export default Accordion;
+export default UncontrolledAccordion;

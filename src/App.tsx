@@ -11,7 +11,7 @@ function App(props:any) {
 
   //выделение через useState
   let [ratingValue, setRatingValue] = useState<RatingValueType>(0)
-
+  let [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(false)
   return (
     <div className={"App"}>
       <PageTitle title={'This is APP component'}/>
@@ -23,8 +23,8 @@ function App(props:any) {
         {/*<Rating value={5}/>*/}
         <OnOff/>
         <Accordion titleValue={'Меню'}/>
+        {/*<Accordion titleValue={'Меню'} collapsed={accordionCollapsed}/>*/}
         <OnOff/>
-        <Accordion titleValue={'sdsdf'}/>
     </div>
   );
 }
