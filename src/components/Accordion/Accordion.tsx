@@ -2,7 +2,8 @@ import React, {useState} from "react";
 
 type AccordionPropsType = {
     titleValue: string,
-    // collapsed: boolean,
+    collapsed: boolean,
+    onChange: () => void
 }
 
 
@@ -14,7 +15,7 @@ function Accordion(props: AccordionPropsType) {
         //AccordionTitle через props.onClick при нажатии вызывает функцию () => {setCollapsed(!collapsed)}
     let [collapsed, setCollapsed] = useState(true)
         return <div>
-            <AccordionTitle titleValue={props.titleValue} onClick={ () => {setCollapsed(!collapsed)}}/> {/*передает полученный из app через props в AccordionTitle*/}
+            <AccordionTitle titleValue={props.titleValue} onChange={ () => {setCollapsed(!collapsed)}}/> {/*передает полученный из app через props в AccordionTitle*/}
             {!collapsed && <AccordionBody/>}
             </div>
         }
@@ -28,12 +29,12 @@ function Accordion(props: AccordionPropsType) {
 
 type AccordionTitlePropsType = {
     titleValue: string
-    onClick: () => void
+    onChange: () => void
 }
 
 //получает title из Accordion через props
 function AccordionTitle(props: AccordionTitlePropsType) {
-    return <div onClick={() => { props.onClick()}}>{props.titleValue}</div>
+    return <div onClick={props.onChange}>{props.titleValue}</div>
 }
 
 function AccordionBody() {
