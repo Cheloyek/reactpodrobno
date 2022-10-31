@@ -2,12 +2,12 @@ import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Rating from "./components/Rating/Rating";
-import Accordion from "./components/Accordion/Accordion";
-import OnOff from "./components/OnOff/OnOff";
+import {Accordion} from "./components/Accordion/Accordion";
+import {OnOff} from "./components/OnOff/OnOff";
 import UncontrolledRating from "./components/UncontrolledRating/UncontrolledRating";
 import {RatingValueType} from "./components/Rating/Rating"
 import {AccordionPropsType} from "./components/UncontrolledAccordion/UncontrolledAccordion";
-import UncontrolledOnOff from "./components/UncontrolledOnOff/UncontrolledOnOff";
+import {UncontrolledOnOff} from "./components/UncontrolledOnOff/UncontrolledOnOff";
 
 function App(props: any) {
 

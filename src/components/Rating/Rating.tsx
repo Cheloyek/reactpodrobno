@@ -7,7 +7,7 @@ type RatingPropsType = {
     onClick: (value: RatingValueType) => void
 }
 
-function Rating(props: RatingPropsType) {
+export function Rating(props: RatingPropsType) {
 /*компактный, значение value передается из app через props*/
     return (
         <div>

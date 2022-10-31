@@ -2,13 +2,13 @@ import React, {useState} from "react";
 
 export type AccordionPropsType = {
     titleValue: string,
-    // collapsed: boolean,
 }
 
 
-//получение title из app через props
+//снаружи не передается то, что контролирует его состояние
 //collapsed - если true не покажет AccordionBody {props.collapsed === false && <AccordionBody/>}
 function UncontrolledAccordion(props: AccordionPropsType) {
+    console.log('UncontrolledAccordion rendering')
         //неконтролируемый, значение передается через useState, при нажатии развернет/свернет меню
         //в AccordionTitle передали onClick который вызывает функцию () => {setCollapsed(!collapsed)}
         //AccordionTitle через props.onClick при нажатии вызывает функцию () => {setCollapsed(!collapsed)}

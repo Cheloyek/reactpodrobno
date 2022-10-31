@@ -6,7 +6,7 @@ type OnOffPropsType = {
 }
 
 
-function OnOff(props: OnOffPropsType) {
+export function OnOff(props: OnOffPropsType) {
 
 
     // стили
@@ -50,4 +50,3 @@ function OnOff(props: OnOffPropsType) {
     )
 }
 
-export default OnOff;
