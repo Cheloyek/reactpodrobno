@@ -1,8 +1,9 @@
-import React, {ChangeEvent, useRef, useState} from 'react';
+import React, {ChangeEvent, ChangeEventHandler, useRef, useState} from 'react';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 import Rating, {RatingValueType} from "../components/Rating/Rating";
 import {Simulate} from "react-dom/test-utils";
 import input = Simulate.input;
+import {action} from "@storybook/addon-actions";
 
 
 
@@ -38,6 +39,28 @@ export const GetValueOfUncontrolledInputByButtonPress = () => {
     }
 // привязка ссылки к input
     return <><input ref={inputRef} /> <button onClick= { save }>save</button> -actual value: {value} </>
+}
+
+export const ContolledInput = () => {
+    const [parentValue, setParentValue] = useState('')
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => { setParentValue(e.currentTarget.value) }
+    return <input value={parentValue} onChange={onChange}/>
+}
+
+export const ContolledCheckbox = () => {
+    const [parentValue, setParentValue] = useState(true)
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => { setParentValue(e.currentTarget.checked) }
+    return <input type='checkbox' checked={parentValue} onChange={onChange}/>
+}
+export const ContolledSelect = () => {
+    const [parentValue, setParentValue] = useState<undefined | string>(undefined)
+    const onChange = (e: ChangeEvent<HTMLSelectElement>) => { setParentValue(e.currentTarget.value) }
+    return <select value={parentValue} onChange={onChange}>
+        <option>none</option>
+        <option value={'1'}>1</option>
+        <option value={'2'}>2</option>
+        <option value={'3'}>3</option>
+    </select>
 }
 
 
