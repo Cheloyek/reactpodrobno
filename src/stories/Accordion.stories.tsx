@@ -56,10 +56,7 @@ UsersUncollapsedMode.args = {
     ...callbacksProps,
     titleValue: 'Users',
     collapsed: false,
-    items: [{title: 'Name1', value: 1}, {title: 'Name2', value: 2}, {title: 'Name3', value: 3}, {
-        title: 'Name4',
-        value: 4
-    }],
+    items: [{title: 'Name1', value: 1},{title: 'Name2', value: 2}, {title: 'Name3', value: 3}, {title: 'Name4', value: 4}],
 }
 
 export const ModeChanging: Story<AccordionPropsType> = (args) => {
@@ -70,10 +67,7 @@ export const ModeChanging: Story<AccordionPropsType> = (args) => {
 
 ModeChanging.args = {
     titleValue: 'Users',
-    items: [{title: 'Name1', value: 1},
-            {title: 'Name2', value: 2},
-            {title: 'Name3', value: 3},
-            {title: 'Name4', value: 4}],
+    items: [{title: 'Name1', value: 1},{title: 'Name2', value: 2}, {title: 'Name3', value: 3}, {title: 'Name4', value: 4}],
     onClick: (value) => {
         alert(`user wth ID ${value} should be happy`)
     }

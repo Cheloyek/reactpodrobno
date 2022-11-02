@@ -13,6 +13,8 @@ export type AccordionPropsType = {
     /*
     * Elements that are showed when accordion is opened. Each item should be ItemType
     * */
+    // items: ItemType[]
+    // items: Array<string> // = string[]
     items: ItemType[]
 
     /*
@@ -37,7 +39,7 @@ export function Accordion(props: AccordionPropsType) {
         return <div>
             <AccordionTitle titleValue={props.titleValue} onChange={ () => {setCollapsed(!collapsed)}}
                             color={props.color}/> {/*передает полученный из app через props в AccordionTitle*/}
-            {!collapsed && <AccordionBody/>}
+            {!collapsed && <AccordionBody items={props.items} onClick={props.onClick}/>}
             </div>
         }
 
@@ -54,17 +56,20 @@ type AccordionTitlePropsType = {
     color?: string
 }
 
+export type AccordionBodyPropsType = {
+    items: ItemType[]
+    onClick: (value: any) => void
+}
+
 //получает title из Accordion через props
 function AccordionTitle(props: AccordionTitlePropsType) {
     return <div style={{color: props.color ? props.color : 'blue'}} onClick={(e) => props.onChange()}>{props.titleValue}</div>
 }
 
-function AccordionBody() {
+function AccordionBody(props: AccordionBodyPropsType) {
     return (
                 <ul>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
+                    {props.items.map((item, index) => <li onClick={() => {props.onClick(item.value)}} key={index}>{item.title}</li>)}
                 </ul>
         )
 }

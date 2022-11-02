@@ -8,6 +8,7 @@ import UncontrolledRating from "./components/UncontrolledRating/UncontrolledRati
 import {RatingValueType} from "./components/Rating/Rating"
 import {AccordionPropsType} from "./components/UncontrolledAccordion/UncontrolledAccordion";
 import {UncontrolledOnOff} from "./components/UncontrolledOnOff/UncontrolledOnOff";
+import Select from "./components/Select/Select";
 
 function App(props: any) {
 
@@ -18,7 +19,7 @@ function App(props: any) {
   return (
     <div className={"App"}>
       <PageTitle title={'This is APP component'}/>
-        <UncontrolledRating/> {/*1 способ рейтинга*/}
+        {/*<UncontrolledRating/> /!*1 способ рейтинга*!/*/}
         {/*<Rating value={1}/>*/}
         {/*<Rating value={2}/>*/}
         <Rating value={ratingValue} onClick={setRatingValue}/> {/*2 способ рейтинга*/}
@@ -26,8 +27,9 @@ function App(props: any) {
         {/*<Rating value={5}/>*/}
         <OnOff on={switchOn} onChange={setSwitchOn}/> {/*значение on off доступно для использования*/}
         {/*<Accordion titleValue={'Меню'}/>*/}
-        <Accordion titleValue={'Меню'} collapsed={accordionCollapsed} onChange={() => {setAccordionCollapsed(!accordionCollapsed)}}/>
+        {/*<Accordion titleValue={'Меню'} collapsed={accordionCollapsed} onChange={() => {setAccordionCollapsed(!accordionCollapsed)}}/>*/}
         <UncontrolledOnOff onChange={setSwitchOn}/> {switchOn.toString()} {/*значение on off не достать для использования*/}
+      <Select/>
     </div>
   );
 }
