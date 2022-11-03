@@ -88,4 +88,3 @@ export function Select(props: SelectPropsType) {
         </div>
         )
 }
-// 58 38

@@ -6,9 +6,8 @@ import {Accordion} from "./components/Accordion/Accordion";
 import {OnOff} from "./components/OnOff/OnOff";
 import UncontrolledRating from "./components/UncontrolledRating/UncontrolledRating";
 import {RatingValueType} from "./components/Rating/Rating"
-import {AccordionPropsType} from "./components/UncontrolledAccordion/UncontrolledAccordion";
+import UncontrolledAccordion, {AccordionPropsType} from "./components/UncontrolledAccordion/UncontrolledAccordion";
 import {UncontrolledOnOff} from "./components/UncontrolledOnOff/UncontrolledOnOff";
-import Select from "./components/Select/Select";
 
 function App(props: any) {
 
@@ -29,7 +28,6 @@ function App(props: any) {
         {/*<Accordion titleValue={'Меню'}/>*/}
         {/*<Accordion titleValue={'Меню'} collapsed={accordionCollapsed} onChange={() => {setAccordionCollapsed(!accordionCollapsed)}}/>*/}
         <UncontrolledOnOff onChange={setSwitchOn}/> {switchOn.toString()} {/*значение on off не достать для использования*/}
-      <Select/>
     </div>
   );
 }
