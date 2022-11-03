@@ -1,30 +1,8 @@
-import React, {useReducer, useState} from "react";
+import React, {useReducer} from "react";
+import {reducer, TOGGLE_COLLAPSED} from "./reducer";
 
 export type AccordionPropsType = {
     titleValue: string,
-}
-
-type ActionType = {
-    type: string
-}
-
-const TOGGLE_CONSTANT = "TOGGLE-COLLAPSED"
-
-//через useReducer в reducer передается action - dispatch(type: string), если type совпадает то return !state (!true или !false) - свернет меню
-const reducer = (state: boolean, action: ActionType) => {
-    // debugger
-    // console.log('REDUCER START:')
-    // console.log(state)
-    // console.log(action)
-    // console.log('REDUCER END')
-
-    switch (action.type) {
-        case TOGGLE_CONSTANT:
-            return !state
-        default:
-            throw new Error('Bad action type')
-    }
-    return state
 }
 
 //     if (action.type === TOGGLE_CONSTANT) {
@@ -43,13 +21,13 @@ function UncontrolledAccordion(props: AccordionPropsType) {
         //AccordionTitle через props.onClick при нажатии вызывает функцию () => {setCollapsed(!collapsed)}
     // let [collapsed, setCollapsed] = useState(true)
         // [имя, dispatch] = useReducer(функция в которую нужно передать, стартовое значение - если false меню не будет развернуто до нажатия, если true то будет развернуто до нажатия)
-    let [collapsed, dispatch] = useReducer(reducer, false)
+    let [state, dispatch] = useReducer(reducer, {collapsed: false})
         return <div>
             {/*<AccordionTitle titleValue={props.titleValue} onClick={ () => {setCollapsed(!collapsed)}}/> /!*передает полученный из app через props в AccordionTitle*!/*/}
             <AccordionTitle titleValue={props.titleValue} onClick={ () => {
                 // debugger
-                dispatch({type: TOGGLE_CONSTANT})}}/> {/*передает полученный из app через props в AccordionTitle*/}
-            {!collapsed && <AccordionBody/>}
+                dispatch({type: TOGGLE_COLLAPSED})}}/> {/*передает полученный из app через props в AccordionTitle*/}
+            {!state.collapsed && <AccordionBody/>}
             </div>
         }
 
