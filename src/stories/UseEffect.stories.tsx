@@ -71,5 +71,83 @@ export const setIntervalExample = () => {
     </>
 }
 
-//часы
+//счетчик h-m-s
 
+export const setTimes = () => {
+    const [seconds, setSeconds] = useState(0)
+    const [minutes, setMinutes] = useState(0)
+    const [hours, setHours] = useState(0)
+
+
+    useEffect(() => {
+
+        setInterval(() => {
+            setSeconds((state) => state + 1)
+        }, 1000)
+
+    },[])
+
+    useEffect(() => {
+        setInterval(() => {
+            setMinutes((state) => state + 1)
+        }, 60000)
+
+    },[])
+
+    useEffect(() => {
+
+        setInterval(() => {
+            let time = new Date()
+            var dateHours = time.getHours()
+
+            setHours((state) => state + 1)
+        }, 3600000)
+
+    },[])
+
+    return (
+        <div>
+            hours: {hours} minutes: {minutes} seconds: {seconds}
+        </div>
+    )
+}
+
+export const setActualTimes = () => {
+    const [seconds, setSeconds] = useState(0)
+    const [minutes, setMinutes] = useState(0)
+    const [hours, setHours] = useState(0)
+    let time = new Date()
+    let dateHours = time.getHours()
+    let dateMinutes = time.getMinutes()
+    let dateSeconds = time.getSeconds()
+
+
+
+    useEffect(() => {
+        setInterval(() => {
+            setSeconds((state) => dateSeconds)
+        }, 1000)
+
+    },)
+
+    useEffect(() => {
+        setInterval(() => {
+            setMinutes((state) => dateMinutes)
+        }, 1000)
+
+    },)
+
+    useEffect(() => {
+        setInterval(() => {
+            setHours((state) => dateHours)
+        }, 1000)
+
+    },)
+
+    return (
+        <div>
+            <div>Actual times</div>
+            hours: {hours} minutes: {minutes} seconds: {seconds}
+        </div>
+    )
+}
