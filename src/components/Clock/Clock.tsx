@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import internal from "stream";
 
 type PropsType = {
 
@@ -10,9 +11,16 @@ export const Clock = () => {
     const [date, setDate] = useState(new Date())
 
     useEffect(() => {
-        setInterval(() => {
+
+        const internalID = setInterval(() => {
+            console.log('tick')
             setDate(new Date())
-        }, 1000)
+        }, 1000);
+
+        return () => {
+            clearInterval(internalID) // stop tick when you go to another stories
+        }
+
     },[])
 
     return <div>
