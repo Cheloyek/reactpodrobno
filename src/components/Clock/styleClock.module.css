@@ -1,0 +1,113 @@
+.digitalClock {
+    background-color: #333333;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    font-size: 20px;
+    color: #1ea7fd;
+}
+
+.clockMain{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #333333;
+}
+
+.img{
+    position: absolute;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    width: 768px;
+    height: 768px;
+}
+
+.clock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    width: 768px;
+    height: 768px;
+    background: radial-gradient(circle, rgb(37, 73, 90) 0%, rgb(25, 48, 60), rgba(9, 25, 33, 1));
+    box-shadow: 0 -15px 15px rgba(134, 134 ,134, 0.35), inset 0 -15px 15px #08466b, 0 -15px 15px rgba(134, 134 ,134, 0.35), inset 0 -15px 15px #08466b ;
+    border-radius: 50%;
+}
+
+.clock:before{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #003f6b;
+    border-radius: 50%;
+    z-index: 20;
+}
+
+.clock .hour .min .sec {
+    position: absolute;
+}
+
+
+.clock .hour .hr {
+    width: 150px;
+    height: 150px;
+}
+
+.clock .min .mn {
+    width: 200px;
+    height: 200px;
+}
+
+.clock .sec .sc {
+    width: 270px;
+    height: 270px;
+}
+
+.hr, .mn, .sc{
+
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    border-radius: 50%; /*образовать круг по которому ходят стрелки*/
+}
+
+/*часовая стрелка*/
+.hr:before{
+    /*margin-left: -768px;*/
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 150px;
+    background-color: #1ea7fd;
+    z-index: 10;
+    border-radius: 6px;
+}
+
+.mn:before{
+    /*margin-left: -768px;*/
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 200px;
+    background-color: #ffffff;
+    z-index: 9;
+    border-radius: 6px;
+}
+
+.sc:before{
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 270px;
+    background-color: #19ff43;
+    z-index: 7;
+    border-radius: 9px;
+}
