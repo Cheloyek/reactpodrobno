@@ -191,9 +191,7 @@ export const KeysTrackerExample = () => {
         }
         window.addEventListener('keypress', handler)
 
-        return () => {
-            window.removeEventListener('keypress', handler)
-        }
+        return () => window.removeEventListener('keypress', handler)
     }, [text])
 
     return <>
