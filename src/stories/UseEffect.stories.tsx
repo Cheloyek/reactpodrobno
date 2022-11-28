@@ -40,10 +40,14 @@ export const setTimeoutExample = () => {
     console.log('setTimeoutExample')
 
     useEffect(() => {
-        setTimeout(() => {
+        let intervalId = setTimeout(() => {
             console.log('setTimeout')
             document.title = counter.toString()
         }, 1000)
+
+        return
+        clearInterval(intervalId)
+
     }, [counter])
 
     return <>
@@ -60,10 +64,14 @@ export const setIntervalExample = () => {
     console.log('setIntervalExample')
 
     useEffect(() => {
-        setInterval(() => {
+        const intervalId = setInterval(() => {
             console.log('setInterval')
             setCounter((state) => state + 1)
         }, 1000)
+
+        return () => {
+            clearInterval(intervalId)
+        }
     }, [])
 
     return <>
@@ -169,5 +177,26 @@ export const ResetEffectExample = () => {
         <button onClick={() => {
         setCounter(counter + 1)}
         }>+</button>
+    </>
+}
+
+export const KeysTrackerExample = () => {
+    const [text, setText] = useState('')
+    console.log('Component rendered ' + text)
+
+    useEffect( () => {
+        const handler = (e: KeyboardEvent) => {
+            console.log(e.key)
+            setText(text + e.key)
+        }
+        window.addEventListener('keypress', handler)
+
+        return () => {
+            window.removeEventListener('keypress', handler)
+        }
+    }, [text])
+
+    return <>
+        Typed text: {text}
     </>
 }
