@@ -47,17 +47,20 @@ export const Clock = (props: PropsType) => {
         transform: `rotateZ(${(ss) + 180}deg)`
     }
 
-    return <div>
-        {props.mode === 'digital' ? <>
-            <div className={s.digitalClock}>
+    let view
+    switch (props.mode) {
+        case 'digital':
+            view = <div className={s.digitalClock}>
                 <span>{get2digitsString(date.getHours())}</span>
                 :
                 <span>{get2digitsString(date.getMinutes())}</span>
                 :
                 <span>{get2digitsString(date.getSeconds())}</span>
             </div>
-        </> : <>
-            <div className={s.clockMain}>
+            break
+        case 'analog':
+        default:
+            view = <div className={s.clockMain}>
                 <div className={s.clock}>
                     <img className={s.img} src={clock} alt=""/>
                     <div className={'hour'}>
@@ -71,7 +74,9 @@ export const Clock = (props: PropsType) => {
                     </div>
                 </div>
             </div>
-        </>
-        }
+    }
+
+    return <div>
+        {view}
     </div>
 }

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 
 export default {
-    title: 'UseState'
+    title: 'UseEffect'
 }
 export const useEffectWithSideEffect = () => {
     const [fake, setFake] = useState(0)
@@ -150,4 +150,24 @@ export const setActualTimes = () => {
             hours: {hours} minutes: {minutes} seconds: {seconds}
         </div>
     )
+}
+
+//example useEffect return reset
+export const ResetEffectExample = () => {
+    const [counter, setCounter] = useState(1)
+    console.log('Component rendered ' + counter)
+
+    useEffect( () => {
+        console.log('Effect occurred ' + counter)
+
+        return () => {
+            console.log('RESET EFFECT ' + counter)
+        }
+    }, [counter])
+
+    return <>
+        <button onClick={() => {
+        setCounter(counter + 1)}
+        }>+</button>
+    </>
 }
